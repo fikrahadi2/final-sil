@@ -126,6 +126,7 @@
     </div>
     <div :class="$style.footer">
       <p>Created by :</p>
+      <p>Arif Rahman Amrul Ghani - 13518023</p>
       <p>Faris Fadhilah - 13518026</p>
       <p>Fikra Hadi Ramadhan - 13518036</p>
       <p>Muhammad Cisco Zulfikar - 13518073</p>
@@ -152,11 +153,32 @@ export default {
     }
   },
   methods: {
+    postForm(data) {
+      return axios({
+        method: 'POST',
+        url: '',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+        data: {
+          val: data
+        }
+      }).then(response => response.data)
+    },
     bmi() {
       this.forms.bmi = this.forms.weight/Math.pow(this.forms.heigth/100,2)
     },
     submitForm() {
       this.$router.push({ path: "/result"})
+      const data = new FormData()
+      data.append('age', this.forms.age)
+      data.append('sex', this.forms.sex)
+      data.append('bmi', this.forms.bmi)
+      data.append('children', this.forms.children)
+      data.append('smoker', this.forms.smoker)
+      data.append('region', this.forms.region)
+      this.postForm(data)
     }
   }
 }
@@ -198,7 +220,7 @@ export default {
       justify-content: space-between;
       flex-direction: column;
       align-items: center;
-      width: 90%;
+      width: 80%;
       &__title {
         font-size: 18px;
         font-weight: bold;
@@ -217,12 +239,16 @@ export default {
             font-size: 14px;
           }
           input {
-            width: 550px;
+            width: 650px;
             padding: 2px;
           }
           select {
-            width: 558px;
+            width: 658px;
             padding: 3px;
+            cursor: pointer;
+            option:hover {
+              cursor: pointer;
+            }
           }
           &.button {
             display: flex;
@@ -238,6 +264,7 @@ export default {
             border-radius: 5px;
             padding: 5px 50px;
             font-size: 16px;
+            cursor: pointer;
           }
         }
       }

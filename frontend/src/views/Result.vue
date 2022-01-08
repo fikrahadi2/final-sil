@@ -24,6 +24,7 @@
     </div>
     <div :class="$style.footer">
       <p>Created by :</p>
+      <p>Arif Rahman Amrul Ghani - 13518023</p>
       <p>Faris Fadhilah - 13518026</p>
       <p>Fikra Hadi Ramadhan - 13518036</p>
       <p>Muhammad Cisco Zulfikar - 13518073</p>
