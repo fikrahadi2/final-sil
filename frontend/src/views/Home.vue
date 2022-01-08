@@ -118,7 +118,7 @@
               <option :value="3">Sulawesi, Papua, dan Sekitarnya</option>
             </select>
           </p>
-          <p>
+          <p :class="$style.button">
             <button :class="$style.submit" @click="submitForm">Kirim</button>
           </p>
         </form>
@@ -156,7 +156,7 @@ export default {
       this.forms.bmi = this.forms.weight/Math.pow(this.forms.heigth/100,2)
     },
     submitForm() {
-
+      this.$router.push({ path: "/result"})
     }
   }
 }
@@ -224,12 +224,19 @@ export default {
             width: 558px;
             padding: 3px;
           }
+          &.button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+          }
           .submit {
             background: #04AA6D;
             color: #FFFFFF;
             border: none;
             border-radius: 5px;
-            padding: 5px 10px;
+            padding: 5px 50px;
             font-size: 16px;
           }
         }
