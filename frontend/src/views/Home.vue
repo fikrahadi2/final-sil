@@ -8,120 +8,106 @@
         </p>
       </div>
       <div :class="$style.form">
-        <p :class="$style.form__title">Silahkan Isi Data Berikut</p>
-        <form 
-          @submit="submitForm"
-          action=""
-          method="post"
-        >
-          <p>
-            <label for="name">Nama</label><br>
-            <input 
-              id="name"
-              type="text" 
-              name="name" 
-              v-model="forms.name"
-              :class="[$style.items, $style.name]"
-            >
-          </p>
-          <p>
-            <label for="age">Umur</label><br>
-            <select
-              id="age" 
-              name="age" 
-              v-model="forms.age"
-              :class="[$style.items, $style.age]"
-            >
-              <option 
-                v-for="el in 101"
-                :key="el"
-                :value="el-1"
-              >
-                {{ el-1 }}
-              </option>
-            </select>
-          </p>
-          <p>
-            <label for="sex">Jenis Kelamin</label><br>
-            <select
-              id="sex"
-              name="sex" 
-              v-model="forms.sex"
-              :class="[$style.items, $style.sex]"
-            >
-              <option :value="0">Perempuan</option>
-              <option :value="1">Laki-Laki</option>
-            </select>
-          </p>
-          <p>
-            <label for="weight">Berat Badan (Dalam kg)</label><br>
-            <input
-              id="weight"
-              name="weight" 
-              type="number"
-              min="0"
-              v-model="forms.weight"
-              :class="[$style.items, $style.weight]"
-            >
-          </p>
-          <p>
-            <label for="height">Tinggi Badan (Dalam cm)</label><br>
-            <input
-              id="height"
-              name="height" 
-              type="number"
-              min="0"
-              v-model="forms.height"
-              :class="[$style.items, $style.height]"
-            >
-          </p>
-          <p>
-            <label for="children">Jumlah Anak</label><br>
-            <select
-              id="children" 
-              name="children" 
-              v-model="forms.children"
-              :class="[$style.items, $style.children]"
-            >
-              <option 
-                v-for="el in 6"
-                :key="el"
-                :value="el-1"
-              >
-                {{ el-1 }}
-              </option>
-            </select>
-          </p>
-          <p>
-            <label for="smoker">Apakah kamu perokok?</label><br>
-            <select
-              id="smoker" 
-              name="smoker" 
-              v-model="forms.smoker"
-              :class="[$style.items, $style.smoker]"
-            >
-              <option :value="0">Tidak</option>
-              <option :value="1">Iya</option>
-            </select>
-          </p>
-          <p>
-            <label for="region">Asal Daerah</label><br>
-            <select
-              id="region" 
-              name="region" 
-              v-model="forms.region"
-              :class="[$style.items, $style.region]"
-            >
-              <option :value="0">Sumatra dan Sekitarnya</option>
-              <option :value="1">Kalimantan dan Sekitarnya</option>
-              <option :value="2">Jawa, Bali, dan Sekitarnya</option>
-              <option :value="3">Sulawesi, Papua, dan Sekitarnya</option>
-            </select>
-          </p>
-          <p :class="$style.button">
-            <button :class="$style.submit" @click="submitForm">Kirim</button>
-          </p>
-        </form>
+        <p :class="$style.form__title">Silakan Isi Data Berikut</p>
+        <p :class="$style.form__input">
+          <label for="name">Nama</label><br />
+          <input
+            id="name"
+            type="text"
+            name="name"
+            v-model="forms.name"
+            :class="[$style.items, $style.name]"
+          />
+        </p>
+        <p :class="$style.form__input">
+          <label for="age">Umur</label><br />
+          <select
+            id="age"
+            name="age"
+            v-model="forms.age"
+            :class="[$style.items, $style.age]"
+          >
+            <option v-for="el in 101" :key="el" :value="el - 1">
+              {{ el - 1 }}
+            </option>
+          </select>
+        </p>
+        <p :class="$style.form__input">
+          <label for="sex">Jenis Kelamin</label><br />
+          <select
+            id="sex"
+            name="sex"
+            v-model="forms.sex"
+            :class="[$style.items, $style.sex]"
+          >
+            <option :value="0">Perempuan</option>
+            <option :value="1">Laki-Laki</option>
+          </select>
+        </p>
+        <p :class="$style.form__input">
+          <label for="weight">Berat Badan (Dalam kg)</label><br />
+          <input
+            id="weight"
+            name="weight"
+            type="number"
+            min="0"
+            v-model="forms.weight"
+            :class="[$style.items, $style.weight]"
+          />
+        </p>
+        <p :class="$style.form__input">
+          <label for="height">Tinggi Badan (Dalam cm)</label><br />
+          <input
+            id="height"
+            name="height"
+            type="number"
+            min="0"
+            v-model="forms.height"
+            :class="[$style.items, $style.height]"
+          />
+        </p>
+        <p :class="$style.form__input">
+          <label for="children">Jumlah Anak</label><br />
+          <select
+            id="children"
+            name="children"
+            v-model="forms.children"
+            :class="[$style.items, $style.children]"
+          >
+            <option v-for="el in 6" :key="el" :value="el - 1">
+              {{ el - 1 }}
+            </option>
+          </select>
+        </p>
+        <p :class="$style.form__input">
+          <label for="smoker">Apakah kamu perokok?</label><br />
+          <select
+            id="smoker"
+            name="smoker"
+            v-model="forms.smoker"
+            :class="[$style.items, $style.smoker]"
+          >
+            <option :value="0">Tidak</option>
+            <option :value="1">Iya</option>
+          </select>
+        </p>
+        <p :class="$style.form__input">
+          <label for="region">Asal Daerah</label><br />
+          <select
+            id="region"
+            name="region"
+            v-model="forms.region"
+            :class="[$style.items, $style.region]"
+          >
+            <option :value="0">Sumatra dan Sekitarnya</option>
+            <option :value="1">Kalimantan dan Sekitarnya</option>
+            <option :value="2">Jawa, Bali, dan Sekitarnya</option>
+            <option :value="3">Sulawesi, Papua, dan Sekitarnya</option>
+          </select>
+        </p>
+        <p :class="$style.button">
+          <button :class="$style.submit" @click="submitForm">Kirim</button>
+        </p>
       </div>
     </div>
     <div :class="$style.footer">
@@ -135,10 +121,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-  name: 'Home',
+  name: "Home",
   data() {
     return {
       forms: {
@@ -152,52 +138,54 @@ export default {
         smoker: null,
         region: null,
         charges: null,
-      }
-    }
+      },
+    };
   },
   methods: {
     async postForm() {
+      let value = {};
+      value["age"] = this.forms.age;
+      value["sex"] = this.forms.sex;
+      value["bmi"] = this.forms.bmi;
+      value["children"] = this.forms.children;
+      value["smoker"] = this.forms.smoker;
+      value["region"] = this.forms.region;
+
       await axios({
-        method: 'POST',
-        url: 'https://post-api-insurance.herokuapp.com/postAPI',
+        method: "POST",
+        url: "https://post-api-insurance.herokuapp.com/postAPI",
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
         },
         data: {
-          val: {
-            age: this.forms.age,
-            sex: this.forms.sex,
-            bmi: this.forms.bmi,
-            children: this.forms.children,
-            smoker: this.forms.smoker,
-            region: this.forms.region,
-          }
-        }
-      }).then(response => {
+          val: value,
+        },
+      }).then((response) => {
         localStorage.setItem("result", response.data);
-      })
-      
-      localStorage.setItem('nameInsurance', this.forms.name);
-      this.openResult();
+        localStorage.setItem("nameInsurance", this.forms.name);
+      });
     },
     bmi() {
-      this.forms.bmi = this.forms.weight/(Math.pow(this.forms.height/100,2))
+      this.forms.bmi = this.forms.weight / Math.pow(this.forms.height / 100, 2);
     },
-    submitForm() {
-      this.bmi()
-      this.postForm()
+    async submitForm() {
+      this.bmi();
+      await this.postForm();
+      this.openResult();
     },
     openResult() {
-      this.$router.push({ path: "/result" })
-    }
-  }
-}
+      this.$router.push({ path: "/result" });
+    },
+  },
+};
 </script>
 
 <style lang="scss" module>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 .home__container {
-  background: #04AA6D;
+  font-family: "Poppins", sans-serif;
+  background: #04aa6d;
   width: 100%;
   height: 100%;
   display: flex;
@@ -205,7 +193,7 @@ export default {
   flex-direction: column;
   align-items: center;
   .content {
-    background: #FFFFFF;
+    background: #ffffff;
     margin: 60px;
     margin-bottom: 20px;
     width: 60%;
@@ -223,7 +211,7 @@ export default {
       flex-direction: column;
       align-items: center;
       .title {
-        color: #04AA6D;
+        color: #04aa6d;
       }
     }
     .form {
@@ -235,49 +223,32 @@ export default {
       &__title {
         font-size: 18px;
         font-weight: bold;
-        color: #04AA6D;
+        color: #04aa6d;
       }
-      form {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        align-items: flex-start;
+
+      &__input {
         width: 100%;
-        p {
-          margin: 5px;
+
+        input,
+        select {
           width: 100%;
-          label {
-            font-size: 14px;
-          }
-          input {
-            width: 650px;
-            padding: 2px;
-          }
-          select {
-            width: 658px;
-            padding: 3px;
-            cursor: pointer;
-            option:hover {
-              cursor: pointer;
-            }
-          }
-          &.button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin-top: 20px;
-          }
-          .submit {
-            background: #04AA6D;
-            color: #FFFFFF;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 50px;
-            font-size: 16px;
-            cursor: pointer;
-          }
+          padding: 0.5rem;
+          border: 1px solid #212121;
+          outline: none;
+          border-radius: 0.5rem;
+          margin-top: 0.5rem;
+          box-sizing: border-box;
         }
+      }
+
+      .submit {
+        background: #04aa6d;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 50px;
+        font-size: 16px;
+        cursor: pointer;
       }
     }
   }
@@ -291,7 +262,7 @@ export default {
       margin: 0;
       font-size: 12px;
       font-weight: bold;
-      color: #FFFFFF;
+      color: #ffffff;
     }
   }
 }
