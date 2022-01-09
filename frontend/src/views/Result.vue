@@ -49,9 +49,9 @@ export default {
       this.name = newVal
     }
   },
-  created() {
+  mounted() {
     this.charges = `USD ${parseFloat(JSON.parse(localStorage.getItem("result"))).toFixed(2)}`
-    this.name = JSON.parse(localStorage.getItem("nameInsurance"))
+    this.name = localStorage.getItem("nameInsurance")
     console.log(this.charges)
   },
   methods: {
