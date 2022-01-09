@@ -176,10 +176,10 @@ export default {
         }
       }).then(response => {
         localStorage.setItem("result", response.data);
-        localStorage.setItem('nameInsurance', this.forms.name);
-        this.openResult();
       })
       
+      localStorage.setItem('nameInsurance', this.forms.name);
+      this.openResult();
     },
     bmi() {
       this.forms.bmi = this.forms.weight/(Math.pow(this.forms.height/100,2))
