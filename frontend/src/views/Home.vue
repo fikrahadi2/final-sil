@@ -135,6 +135,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Home',
   data() {
@@ -143,42 +145,48 @@ export default {
         name: null,
         age: null,
         sex: null,
-        heigth: null,
+        height: null,
         weight: null,
         bmi: null,
         children: null,
         smoker: null,
         region: null,
+        charges: null,
       }
     }
   },
   methods: {
-    postForm(data) {
-      return axios({
+    async postForm() {
+      await axios({
         method: 'POST',
-        url: '',
+        url: 'https://post-api-insurance.herokuapp.com/postAPI',
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
         },
         data: {
-          val: data
+          val: {
+            age: this.forms.age,
+            sex: this.forms.sex,
+            bmi: this.forms.bmi,
+            children: this.forms.children,
+            smoker: this.forms.smoker,
+            region: this.forms.region,
+          }
         }
-      }).then(response => response.data)
+      }).then(response => localStorage.setItem("result", response.data))
+      localStorage.setItem('nameInsurance', this.forms.name)
     },
     bmi() {
-      this.forms.bmi = this.forms.weight/Math.pow(this.forms.heigth/100,2)
+      this.forms.bmi = this.forms.weight/(Math.pow(this.forms.height/100,2))
     },
     submitForm() {
-      this.$router.push({ path: "/result"})
-      const data = new FormData()
-      data.append('age', this.forms.age)
-      data.append('sex', this.forms.sex)
-      data.append('bmi', this.forms.bmi)
-      data.append('children', this.forms.children)
-      data.append('smoker', this.forms.smoker)
-      data.append('region', this.forms.region)
-      this.postForm(data)
+      this.bmi()
+      this.postForm()
+      this.openResult()
+    },
+    openResult() {
+      this.$router.push({ path: "/result" })
     }
   }
 }

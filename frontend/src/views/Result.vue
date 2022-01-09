@@ -15,7 +15,7 @@
         <div>
           <p>Biaya yang harus dibayarkan</p>
           <p>:</p>
-          <p>{{ charge }}</p>
+          <p>{{ charges }}</p>
         </div>
       </div>
       <p>
@@ -37,23 +37,27 @@ export default {
   name: 'Result',
   data() {
     return {
-      forms: {
-        name: null,
-        age: null,
-        sex: null,
-        heigth: null,
-        weight: null,
-        bmi: null,
-        children: null,
-        smoker: null,
-        region: null,
-      },
-      charge: "Rp. 10.000.000,-",
-      name: "Fikra Hadi Ramadhan"
+      charges: null,
+      name: null
     }
+  },
+  watch:{
+    charges(newVal) {
+      this.charges = newVal
+    },
+    name(newVal) {
+      this.name = newVal
+    }
+  },
+  created() {
+    this.charges = `USD ${parseFloat(JSON.parse(localStorage.getItem("result"))).toFixed(2)}`
+    this.name = JSON.parse(localStorage.getItem("nameInsurance"))
+    console.log(this.charges)
   },
   methods: {
     back() {
+      localStorage.removeItem("result")
+      localStorage.removeItem("nameInsurance")
       this.$router.push({ path: "/"})
     }
   }
