@@ -180,9 +180,9 @@ export default {
     bmi() {
       this.forms.bmi = this.forms.weight/(Math.pow(this.forms.height/100,2))
     },
-    submitForm() {
+    async submitForm() {
       this.bmi()
-      this.postForm()
+      await this.postForm()
       this.openResult()
     },
     openResult() {
