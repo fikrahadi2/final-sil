@@ -50,10 +50,10 @@ export default {
     }
   },
   mounted() {
-  console.log("result", localStorage.getItem("result"));
-  console.log("name", localStorage.getItem("nameInsurance"));
-    // this.charges = `USD ${parseFloat(localStorage.getItem("result")).toFixed(2)}`
-    // this.name = localStorage.getItem("nameInsurance")
+    console.log("result", localStorage.getItem("result"));
+    console.log("name", localStorage.getItem("nameInsurance"));
+    this.name = localStorage.getItem("nameInsurance");
+    this.charges = `USD ${parseFloat(localStorage.getItem("result")).toFixed(2)}`;
     // console.log(this.charges)
   },
   methods: {
