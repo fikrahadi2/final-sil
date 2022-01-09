@@ -50,7 +50,7 @@ export default {
     }
   },
   mounted() {
-    this.charges = `USD ${parseFloat(JSON.parse(localStorage.getItem("result"))).toFixed(2)}`
+    this.charges = `USD ${parseFloat(localStorage.getItem("result")).toFixed(2)}`
     this.name = localStorage.getItem("nameInsurance")
     console.log(this.charges)
   },
