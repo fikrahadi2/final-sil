@@ -174,16 +174,19 @@ export default {
             region: this.forms.region,
           }
         }
-      }).then(response => localStorage.setItem("result", response.data))
-      localStorage.setItem('nameInsurance', this.forms.name)
+      }).then(response => {
+        localStorage.setItem("result", response.data);
+        localStorage.setItem('nameInsurance', this.forms.name);
+        this.openResult();
+      })
+      
     },
     bmi() {
       this.forms.bmi = this.forms.weight/(Math.pow(this.forms.height/100,2))
     },
-    async submitForm() {
+    submitForm() {
       this.bmi()
-      await this.postForm()
-      this.openResult()
+      this.postForm()
     },
     openResult() {
       this.$router.push({ path: "/result" })
