@@ -5,12 +5,9 @@
         <h1 :class="$style.title">Prediksi Biaya Asuransi Kesehatan</h1>
       </div>
       <div :class="$style.charges">
-        <p :class="$style.charges__name">
-          Hallo, {{ name }}
-        </p>
+        <p :class="$style.charges__name">Hallo, {{ name }}</p>
         <p :class="$style.charges__title">
-          Berikut hasil pediksi biaya asuransi 
-          dari data yang sudah diisikan
+          Berikut hasil pediksi biaya asuransi dari data yang sudah diisikan
         </p>
         <div>
           <p>Biaya yang harus dibayarkan</p>
@@ -34,41 +31,43 @@
 
 <script>
 export default {
-  name: 'Result',
+  name: "Result",
   data() {
     return {
       charges: null,
-      name: null
-    }
+      name: null,
+    };
   },
-  watch:{
+  watch: {
     charges(newVal) {
-      this.charges = newVal
+      this.charges = newVal;
     },
     name(newVal) {
-      this.name = newVal
-    }
+      this.name = newVal;
+    },
   },
   mounted() {
-    console.log("result", localStorage.getItem("result"));
-    console.log("name", localStorage.getItem("nameInsurance"));
     this.name = localStorage.getItem("nameInsurance");
-    this.charges = `USD ${parseFloat(localStorage.getItem("result")).toFixed(2)}`;
-    // console.log(this.charges)
+    this.charges = `USD ${parseFloat(localStorage.getItem("result")).toFixed(
+      2
+    )}`;
   },
   methods: {
     back() {
-      localStorage.removeItem("result")
-      localStorage.removeItem("nameInsurance")
-      this.$router.push({ path: "/"})
-    }
-  }
-}
+      localStorage.removeItem("result");
+      localStorage.removeItem("nameInsurance");
+      this.$router.push({ path: "/" });
+    },
+  },
+};
 </script>
 
 <style lang="scss" module>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 .result__container {
-  background: #04AA6D;
+  font-family: "Poppins", sans-serif;
+  background: #04aa6d;
   width: 100%;
   height: auto;
   min-height: 100vh;
@@ -77,7 +76,7 @@ export default {
   flex-direction: column;
   align-items: center;
   .content {
-    background: #FFFFFF;
+    background: #ffffff;
     margin: 60px;
     margin-bottom: 20px;
     width: 60%;
@@ -95,7 +94,7 @@ export default {
       flex-direction: column;
       align-items: center;
       .title {
-        color: #04AA6D;
+        color: #04aa6d;
       }
     }
     .charges {
@@ -104,10 +103,11 @@ export default {
       flex-direction: column;
       align-items: center;
       width: 90%;
-      &__title, &__name {
+      &__title,
+      &__name {
         font-size: 18px;
         font-weight: bold;
-        color: #04AA6D;
+        color: #04aa6d;
         margin-bottom: 0;
       }
       &__title {
@@ -132,7 +132,7 @@ export default {
       margin: 0;
       font-size: 12px;
       font-weight: bold;
-      color: #FFFFFF;
+      color: #ffffff;
     }
   }
 }
